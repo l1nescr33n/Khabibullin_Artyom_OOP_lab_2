@@ -39,7 +39,8 @@ class Library:  # Создаём класс Library
     @staticmethod
     def get_index_by_book_id(books_id):  # Объявление метода, возвращающего индекс книги
         for book_id, name in enumerate(BOOKS_DATABASE):  # Получение пары индекс-значение в последовательности
-            return book_id  # Возврат полученного значения
+            if books_id == book_id + 1:  # Прибавление единицы, так как book_id равна 0 в начале просмотра списка
+                return book_id  # Возврат полученного значения
         if books_id not in BOOKS_DATABASE:  # Вызов исключения при отсутствии номера книги
             raise ValueError('"Книги с запрашиваемым id не существует"')
 
